@@ -5,17 +5,17 @@ import AlertBox from "../components/AlertBox";
 const SignUp = () => {
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
-    
+
     const navigate = useNavigate();
     const { Signup } = useContext(UserContext)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!name || !password) {
-            return <AlertBox type='error' message='Please enter all the fields' />
+            return alert('Please enter name and password')
 
         } else if (password.length < 6) {
-            return <AlertBox type='error' message='Password must be at least 6 characters' />
+            return alert('Password must be at least 6 characters long')
 
         }
 
