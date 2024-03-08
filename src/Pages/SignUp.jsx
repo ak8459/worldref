@@ -12,11 +12,12 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!name || !password) {
-            return alert('Please enter name and password')
+            alert('Please enter name and password')
+            return
 
         } else if (password.length < 6) {
-            return alert('Password must be at least 6 characters long')
-
+            alert('Password must be at least 6 characters long')
+            return
         }
 
         Signup(name, password)
