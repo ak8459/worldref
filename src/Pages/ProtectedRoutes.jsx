@@ -4,6 +4,7 @@ import { UserContext } from '../UserContext/UserContext'
 
 const ProtectedRoutes = ({ children }) => {
     const auth = localStorage.getItem('auth')
+    console.log(auth);
     if (auth) {
         return children
     }

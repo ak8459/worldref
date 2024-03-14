@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 
 const initialState = {
-    username: null,
-    password: null,
-    isAuth: localStorage.getItem('auth') ? true : false
+    users: JSON.parse(localStorage.getItem('userInfo')) || [],
 }
 
 

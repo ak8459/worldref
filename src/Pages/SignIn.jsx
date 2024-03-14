@@ -8,17 +8,10 @@ const SignIn = () => {
     const [name, setName] = useState('')
     const navigate = useNavigate();
     const { loginUser } = useContext(UserContext)
-    const userData = JSON.parse(localStorage.getItem('userInfo')) || null;
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!name || !password) {
-            alert('Please enter name and password')
-            return
-        } else if (name !== userData.username || password !== userData.password) {
-            alert('Invalid credentials')
-            return
-        }
+
+        
         loginUser(name, password)
         navigate('/')
 

@@ -9,12 +9,13 @@ const AllRoutes = () => {
 
     return (
         <Routes>
-            <Route exact path='/' element={
-                <ProtectedRoutes>
-                    <Home />
-                </ProtectedRoutes>} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route exact path='/login' element={<SignIn />} />
+            <Route path='/' element={
+                // <ProtectedRoutes>
+                <Home />
+                // </ProtectedRoutes>
+            } />
+            <Route path='/auth/signup' element={<SignUp />} />
+            <Route path='/login' element={<SignIn />} />
         </Routes>
     )
 }

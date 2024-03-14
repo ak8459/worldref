@@ -2,39 +2,36 @@ import { useContext, useState } from "react";
 import { UserContext } from "../UserContext/UserContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import AlertBox from "../components/AlertBox";
+import { toast } from "react-toastify";
 const SignUp = () => {
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
 
     const navigate = useNavigate();
-    const { Signup } = useContext(UserContext)
+    const { Signup, userData: { users } } = useContext(UserContext)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!name || !password) {
-            alert('Please enter name and password')
-            return
 
-        } else if (password.length < 6) {
-            alert('Password must be at least 6 characters long')
+        if (name === '' || password === '') {
+            alert('Please fill all the fields')
             return
         }
 
-        Signup(name, password)
+        users?.find(user => user.username === name) ? alert('User already exists') : Signup(name, password)
         setTimeout(() => {
             navigate('/')
         }, 1000)
+
     }
 
-    if (localStorage.getItem('auth')) {
-        return <Navigate to={'/'} />
-    }
 
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white  dark:bg-gray-900">
             <div className="container flex items-center justify-center h-screen px-6 mx-auto">
                 <form className="w-full max-w-md">
                     <h1 className="mt-3 text-3xl text-center font-semibold text-gray-800 capitalize sm:text-3xl dark:text-white">Register your account</h1>
+
                     <div className="relative flex items-center mt-8">
                         <span className="absolute">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
